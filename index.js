@@ -44,9 +44,8 @@
 
 // setting all global variables (note: why const? cos it won't change)
 // notice that port for mongodb is not really needed
-const dbUrl =
-  "mongodb://admin:test123@ds161121.mlab.com:61121/foodiez" ||
-  "mongodb://localhost/test"
+
+const dbUrl = process.env.MONDODB_URI || "mongodb://localhost/test"
 const port = process.env.PORT || 4000 // this is for our express server
 
 // installing all modules
@@ -56,6 +55,7 @@ const mongoose = require("mongoose") // for DB
 const exphbs = require("express-handlebars") // for Handlebars
 const bodyParser = require("body-parser") // for accessing POST request
 const methodOverride = require("method-override") // for accessing PUT / DELETE
+require("dotenv").config({ silent: true })
 
 // requiring actual file now
 // PITSTOP, look at file inside models folder now
